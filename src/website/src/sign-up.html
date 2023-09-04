@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./dist/output.css" rel="stylesheet">
+    <script src="./htmx.min.js"></script>
+  </head>
+  <body class="w-screen">
+    <div class="flex flex-col w-full">
+      <header>
+        <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+          <div class="flex lg:flex-1">
+            <a href="/" class="-m-1.5 p-1.5">
+              <span class="sr-only">Echo</span>
+              <img class="h-16 w-auto" src="/assets/logo.png" alt="echo logo" />
+            </a>
+          </div>
+          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="/sign-in" class="text-sm font-semibold leading-6 text-accent">
+              Sign in <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </nav>
+      </header>
+      <div id="idk" class="bg-secondary shadow sm:rounded-lg p-6 mx-auto" style="width: 50%;">
+        <h3 class="px-4 text-base font-semibold leading-6 text-white text-center">Create An Echo Account</h3>
+        <div class="mt-2 text-sm text-gray-300 text-center">
+          <p>No need for a password, you will be given a hash to save.</p>
+        </div>
+        <form 
+          hx-post="/user/sign-up"
+          hx-trigger="submit"
+          hx-target="#idk"
+          hx-swap="outerHTML"
+          id="sign-up-form" class="flex flex-col items-center">
+          <div class="pt-3 mb-5">
+            <input
+              type="text"
+              name="username"
+              id="username"
+              class="block rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Enter a username..."
+            />
+          </div>
+          <button
+            type="submit"
+            class="mt-10 w-12 items-center justify-center rounded-md bg-accent px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:ml-3 sm:mt-0 sm:w-auto"
+          >
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

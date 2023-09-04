@@ -1,0 +1,29 @@
+[package]
+name = "echo_api"
+version = "0.1.0"
+edition = "2021"
+authors = ["Antonio Hickey <contact@antoniohickey.com>"]
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4"
+anyhow = "1.0.75"
+dotenv = "0.15.0"
+env_logger = "0.10.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sqlx = { version = "0.7", features = [ "runtime-tokio", "tls-rustls", "postgres", "uuid" ] }
+uuid = { version = "1.4.1", features = ["v4", "serde", "fast-rng"] }
+actix-files = "0.6.2"
+reqwest = { version = "0.11", features = ["json"] }
+futures = "0.3.28"
+tokio = { version = "1.32.0", features = ["full"] }
+jwt = "0.16.0"
+actix-web-httpauth = "0.8.0"
+argonautica = "0.2.0"
+hmac = "0.12.1"
+sha2 = "0.10.6"
+
+
