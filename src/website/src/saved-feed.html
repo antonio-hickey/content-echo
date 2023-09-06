@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Curated Content Feed">
+    <title>Echo</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link href="./dist/output.css" rel="stylesheet">
     <script src="./htmx.min.js"></script>
     <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
@@ -17,7 +20,7 @@
               <img class="h-16 w-auto" src="/assets/logo.png" alt="echo logo" />
             </a>
           </div>
-          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <div class="flex flex-1 justify-end">
             <a id="user-nav" href="/sign-in" class="text-sm font-semibold leading-6 text-accent">
               Sign in <span aria-hidden="true">&rarr;</span>
             </a>
@@ -42,7 +45,7 @@
         userNav.innerText = "Back to Feed";
 
         let x = document.createElement('li');
-        x.setAttribute('hx-post', '/kook/saved')
+        x.setAttribute('hx-post', '/auth-actions/saved')
         x.setAttribute('hx-swap', 'outerHTML')
         x.setAttribute('hx-trigger', 'load')
         x.setAttribute('hx-ext', 'json-enc')

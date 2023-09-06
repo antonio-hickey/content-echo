@@ -82,17 +82,16 @@ pub async fn sign_up(
     .await
     {   
         Ok(_) => {
-            let sign_up_html = format!("<div class='bg-secondary shadow sm:rounded-lg p-6 mx-auto mt-10' style='width: 50%;'>
-        <h3 class='px-4 text-base font-semibold leading-6 text-white text-center'>Save Your Private Key:</h3>
+            let sign_up_html = format!("<div class='bg-secondary shadow sm:rounded-lg p-6 mx-auto mt-10'>
+        <h3 class='px-4 text-base font-semibold leading-6 text-white text-center'>Save Your Hash Key</h3>
         <div class='mt-2 text-sm text-gray-300 text-center'>
-          <p>If on web save it as a file (recommended to use encrypted filesystem)</p>
-          <p>If on mobile save it in notes</p>
+          <p>Copy & Paste your hash key somewhere safe-ish, notes on mobile or text file on desktop is probably fine.</p>
         </div>
         <div
           hx-boost='true'
           class='flex flex-col items-center w-full'>
           <div class='flex pt-3 mb-5 w-full mx-auto items-center'>
-            <label class='inline-block text-xs font-medium text-white ml-auto align-middle'>
+            <label class='text-xs font-medium text-white ml-auto align-middle'>
               Private Key: 
             </label>
             <input
@@ -103,7 +102,7 @@ pub async fn sign_up(
           </div>
           <a
             href='/sign-in'
-            class='mt-10 w-12 items-center justify-center rounded-md bg-accent px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:ml-3 sm:mt-0 sm:w-auto'
+            class='mt-10 w-32 text-center items-center justify-center rounded-md bg-accent px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
           >
             I Saved It
           </a>
@@ -153,7 +152,7 @@ pub async fn sign_in(
             let claims = TokenClaims { id: row.id };
             let token_str = claims.sign_with_key(&jwt_secret).unwrap();
 
-            Ok(HttpResponse::Ok().insert_header(("Set-Cookie", token_str.clone())).insert_header(("HX-Location", "http://localhost:8080")).body(token_str))
+            Ok(HttpResponse::Ok().insert_header(("HX-Location", "https://echo.antoniohickey.com/")).body(token_str))
         }
         Err(e) => {
             println!("{:?}", e);

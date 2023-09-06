@@ -41,7 +41,7 @@ async fn main() -> Result<()> {
             .app_data(app_state.clone())
             .configure(routes::config::configure_routes)
     })
-    .bind(("127.0.0.1", 8080))?
+    .bind(("0.0.0.0", 8081))?
     .run()
     .await?)
 }

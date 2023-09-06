@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Curated Content Feed">
+    <title>Echo</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link href="./dist/output.css" rel="stylesheet">
     <script src="./htmx.min.js"></script>
     <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
@@ -17,7 +20,7 @@
               <img class="h-16 w-auto" src="/assets/logo.png" alt="echo logo" />
             </a>
           </div>
-          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <div class="flex flex-1 justify-end">
             <a id="user-nav" href="/sign-in" class="text-sm font-semibold leading-6 text-accent">
               Sign in <span aria-hidden="true">&rarr;</span>
             </a>
@@ -58,11 +61,12 @@
 
       document.addEventListener('htmx:beforeRequest', function (event) {
         // Before sending save request display a spinner in the btn
-        if (event.detail.pathInfo.requestPath == '/kook/save') {
+        if (event.detail.pathInfo.requestPath == '/auth-actions/save') {
           let btn = event.detail.target;
           let btnText = btn.children[0];
           btnText.style.display = 'none';
           let spinner = btn.children[1];
+          spinner.style.textAlign = 'center';
           spinner.style.display = 'inline-block';
         }
       });

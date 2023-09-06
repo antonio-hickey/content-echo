@@ -16,6 +16,7 @@ pub fn configure_routes(cfg: &mut web::ServiceConfig) {
             .service(routes::web::get_css)
             .service(routes::web::get_htmx_js)
             .service(routes::web::get_logo)
+            .service(routes::web::get_favicon)
             .service(routes::web::get_sign_up_html)
             .service(routes::web::get_sign_in_html)
             .service(routes::web::get_saved_feed_html)
