@@ -27,7 +27,7 @@
           </div>
         </nav>
       </header>
-      <ul role="list" class="grid grid-cols-1 gap-10 sm:grid-cols-2">
+      <ul id="content-container" role="list" class="grid grid-cols-1 gap-10 sm:grid-cols-2">
         <li hx-get="/posts/feed" hx-swap="outerHTML" hx-trigger="load" hx-indicator="#spinner"></li>
       </ul>
       <div id="spinner" role="status" class="text-center htmx-indicator">
@@ -46,18 +46,18 @@
         let userNav = document.getElementById('user-nav');
         userNav.href = "/saved";
         userNav.innerText = "Saved Posts";
-      }
 
-      document.addEventListener('htmx:afterRequest', function (event) {
-        // After we get response from /posts/feed we add the bearer token
-        // header to all our save posts btn's
-        if (event.detail.xhr.responseURL.endsWith('/posts/feed')) {
-          let posts = Array.from(document.getElementsByClassName("save-post-form"));        
-          posts.forEach((post) => {
-            post.setAttribute('hx-headers', `{"Authorization": "Bearer ${hashKey}"}`)
-          });
-        }
-      });
+        document.addEventListener('htmx:afterRequest', function (event) {
+          // After we get response from /posts/feed we add the bearer token
+          // header to all our save posts btn's
+          if (event.detail.xhr.responseURL.endsWith('/posts/feed')) {
+            let posts = Array.from(document.getElementsByClassName("save-post-form")); 
+            posts.forEach((post) => {
+              post.setAttribute('hx-headers', `{"Authorization": "Bearer ${hashKey}"}`)
+            });
+          }
+        });
+      }
 
       document.addEventListener('htmx:beforeRequest', function (event) {
         // Before sending save request display a spinner in the btn

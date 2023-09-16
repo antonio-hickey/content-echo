@@ -189,7 +189,7 @@ fn create_post_html_card(post: &Post) -> String {
             <span class=\"absolute inset-x-0 top-0 h-6 w-full bg-accent transition-all duration-300 group-hover:scale-[100]\"></span>
             <div class=\"relative z-10 mx-auto max-w-md\">
                 <div
-                    class=\"space-y-1 pt-2 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90\"
+                    class=\"space-y-1 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90\"
                 >
                     <h3 class='truncate text-xl font-extrabold text-white'>{}</h3>
                     <p class=\"mt-1 truncate text-sm text-gray-100\">Author: {}</p>
@@ -211,7 +211,7 @@ fn create_post_html_card(post: &Post) -> String {
                     <button
                       id='save-btn-{}'
                       type='submit'
-                      class='rounded-md mx-auto my-5 bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-white/50 transition-all duration-300 group-hover:bg-secondary'
+                      class='save-post-btn rounded-md mx-auto my-5 bg-primary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-white/50 transition-all duration-300 group-hover:bg-secondary'
                     >
                         <span id='save-post-text'>Save Post</span>
                         <div id='spinner' style='display: none;'>
